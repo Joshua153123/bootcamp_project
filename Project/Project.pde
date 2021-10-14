@@ -22,16 +22,11 @@ void setup() {
 
   rectMode(CENTER);
   noStroke();
-  frameRate(20);
+  frameRate(60);
 
   highscore=0;
   img = loadImage("stardust.png");
 }
-
-
-
-
-
 
 void draw() {
   image(img,0,0,width,height);
