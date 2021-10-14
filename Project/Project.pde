@@ -1,6 +1,7 @@
 PImage img;
 Snake snake;
 Food food;
+Food food2;
 
 boolean ismoved=false;
 boolean isUp=false;
@@ -18,11 +19,12 @@ void setup() {
 
   snake = new Snake();
   food = new Food();
+  food2= new Food();
 
 
   rectMode(CENTER);
   noStroke();
-  frameRate(60);
+  frameRate(100);
 
   highscore=0;
   img = loadImage("stardust.png");
@@ -46,15 +48,20 @@ void draw() {
 
   snake.draw();
   food.draw();
+  food2.draw();
   if (ismoved) {
     snake.move();
   }
 
   if ( dist(food.x, food.y, snake.xPos.get(0), snake.yPos.get(0))<food.rad+snake.radius) {
     food.newfood();
-    
     snake.add();
   }
+   if ( dist(food2.x, food2.y, snake.xPos.get(0), snake.yPos.get(0))<food2.rad+snake.radius) {
+    food2.newfood();
+    snake.add();
+  }
+
 
   for (int i=1; i<snake.len; i++) {
     if (dist(snake.xPos.get(0), snake.yPos.get(0), snake.xPos.get(i), snake.yPos.get(i))<snake.rectLen) {
